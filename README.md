@@ -14,6 +14,8 @@ docker run -d -p 0.0.0.0:31981:22 -v ~/gopath:/root/gopath dpetersen/dev-contain
 
 There is a bootstrapping script you can run with `/root/run_once.sh` that will bootstrap a `GOPATH` hierarchy and install a few development tools. If you have volume mounted an existing `GOPATH`, this won't smash it.
 
+I'd advise you to set up an SSH alias as [explained here](https://github.com/dpetersen/dev-container-base#connecting).
+
 ## Development
 
 Helpful reminders on how to build, tag, and push this can be found in [the Development section](https://github.com/dpetersen/dev-container-base#development) of the other image.
