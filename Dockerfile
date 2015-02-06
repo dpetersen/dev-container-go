@@ -5,7 +5,7 @@ MAINTAINER Don Petersen <don@donpetersen.net>
 RUN git clone --branch go1.4.1 https://github.com/golang/go.git /root/go && \
   cd /root/go/src && \
   ./all.bash && \
-  cp /root/go/bin/go /usr/local/bin/
+  cp /root/go/bin/* /usr/local/bin/
 
 # It's reasonably likely that you'll need hg to 'go get' some official
 # tools and such.
