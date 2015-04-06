@@ -2,7 +2,7 @@ FROM dpetersen/dev-container-base:latest
 MAINTAINER Don Petersen <don@donpetersen.net>
 
 # Download, compile, and install Go
-RUN git clone --branch go1.4.1 https://github.com/golang/go.git /root/go && \
+RUN git clone --branch go1.4.2 https://github.com/golang/go.git /root/go && \
   cd /root/go/src && \
   ./all.bash && \
   cp /root/go/bin/* /usr/local/bin/
