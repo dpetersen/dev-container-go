@@ -16,5 +16,8 @@ go get -v github.com/golang/lint/golint
 go get -v github.com/kisielk/errcheck
 go get -v github.com/jstemmer/gotags
 
+echo "Installing pp..."
+go get -v github.com/k0kubun/pp
+
 echo "Installing godep..."
 go get -v github.com/tools/godep
