@@ -1,5 +1,7 @@
 # dev-container-go
 
+[![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://registry.hub.docker.com/u/dpetersen/dev-container-go/)
+
 A container, based on [dev-container-base](https://github.com/dpetersen/dev-container-base), for developing in Go.
 
 ## Usage
