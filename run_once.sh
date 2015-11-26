@@ -5,16 +5,10 @@ mkdir -p /root/gopath/src /root/gopath/bin /root/gopath/pkg
 echo "Installing tools..."
 go get -v golang.org/x/tools/cmd/...
 
-# The following were chosen because they're what vim-go installs if you
-# ask it to. They're all pretty helpful to have around.
-go get -v github.com/nsf/gocode
-go get -v golang.org/x/tools/cmd/goimports
-go get -v code.google.com/p/rog-go/exp/cmd/godef
-go get -v golang.org/x/tools/cmd/oracle
-go get -v golang.org/x/tools/cmd/gorename
-go get -v github.com/golang/lint/golint
-go get -v github.com/kisielk/errcheck
-go get -v github.com/jstemmer/gotags
+# These are helpful dependencies to get vim-go's full functionality, and many
+# of them are helpful on their own.
+echo "Running vim-go's GoInstallBinaries..."
+vim +GoInstallBinaries +qall
 
 echo "Installing pp..."
 go get -v github.com/k0kubun/pp
