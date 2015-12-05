@@ -7,7 +7,7 @@ A container, based on [dev-container-base](https://github.com/dpetersen/dev-cont
 
 ## Usage
 
-The base container starts an SSH server, so you can read more about that in [its README](https://github.com/dpetersen/dev-container-base). This container assumes that your `GOPATH` will be `/root/gopath`. You'll probably want to volume mount a directory for this, so your changes are easy to get to if you shut down the container.
+The base container starts an SSH server, so you can read more about that in [its README](https://github.com/dpetersen/dev-container-base). This container assumes that your `GOPATH` will be `/home/dev/gopath`. You'll probably want to volume mount a directory for this, so your changes are easy to get to if you shut down the container.
 
 I usually start it with something like (assuming `$GOPATH` is `~/gopath`):
 
@@ -15,11 +15,11 @@ I usually start it with something like (assuming `$GOPATH` is `~/gopath`):
 docker run -d \
   -e AUTHORIZED_GH_USERS="dpetersen" \
   -p 0.0.0.0:31981:22 \
-  -v ~/gopath:/root/gopath \
+  -v ~/gopath:/home/dev/gopath \
   dpetersen/dev-container-go:latest
 ```
 
-There is a bootstrapping script you can run with `/root/run_once.sh` that will bootstrap a `GOPATH` hierarchy and install a few development tools. If you have volume mounted an existing `GOPATH`, this won't smash it.
+There is a bootstrapping script you can run with `/home/dev/run_once.sh` that will bootstrap a `GOPATH` hierarchy and install a few development tools. If you have volume mounted an existing `GOPATH`, this won't smash it.
 
 I'd advise you to set up an SSH alias as [explained here](https://github.com/dpetersen/dev-container-base#connecting).
 
