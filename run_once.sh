@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p /root/gopath/src /root/gopath/bin /root/gopath/pkg  
+mkdir -p $GOPATH
 
 echo "Installing tools..."
 go get -v golang.org/x/tools/cmd/...
