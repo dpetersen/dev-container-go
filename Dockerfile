@@ -13,15 +13,10 @@ RUN DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
   unzip autoconf libtool
 
 # Installs protoc v3 for codegen. protoc-gen-go is installed in run_once.sh.
-RUN git clone https://github.com/google/protobuf.git /home/dev/protobuf &&\
-  cd /home/dev/protobuf &&\
-  ./autogen.sh &&\
-  ./configure &&\
-  make &&\
-  make check &&\
-  sudo make install &&\
-  sudo ldconfig &&\
-  rm -fR /home/dev/protobuf
+RUN wget -O /home/dev/protoc-3.0.0-linux-x86_64.zip https://github.com/google/protobuf/releases/download/v3.0.0/protoc-3.0.0-linux-x86_64.zip &&\
+    sudo unzip /home/dev/protoc-3.0.0-linux-x86_64.zip bin/protoc -d /usr/local/ &&\
+    sudo chmod a+x /usr/local/bin/protoc &&\
+    rm -fR /home/dev/protoc-3.0.0-linux-x86_64*
 
 # Drop in zsh environment configuring script
 ADD S51_gopath_unversioned /home/dev/.zsh.d/S51_gopath_unversioned
