@@ -1,24 +1,26 @@
-FROM dpetersen/dev-container-base:v1.5
+FROM dpetersen/dev-container-base:v1.7
 MAINTAINER Don Petersen <don@donpetersen.net>
 
 # Download and extract built Go. Includes stdlib source.
-RUN wget -O /home/dev/go1.9.1.linux-amd64.tar.gz https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz &&\
-  sudo tar -C /usr/local -zxvf /home/dev/go1.9.1.linux-amd64.tar.gz &&\
-  rm /home/dev/go1.9.1.linux-amd64.tar.gz
+ENV DEV_CONTAINER_GO_VERSION=go1.9.2
+RUN wget -O /home/dev/$DEV_CONTAINER_GO_VERSION.linux-amd64.tar.gz https://storage.googleapis.com/golang/$DEV_CONTAINER_GO_VERSION.linux-amd64.tar.gz &&\
+  sudo tar -C /usr/local -zxvf /home/dev/$DEV_CONTAINER_GO_VERSION.linux-amd64.tar.gz &&\
+  rm /home/dev/$DEV_CONTAINER_GO_VERSION.linux-amd64.tar.gz
 
 RUN DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 # For compiling protoc
   unzip autoconf libtool
 
-ENV PROTOC_VERSION=3.4.0
 # Installs protoc for codegen. protoc-gen-go is installed in run_once.sh.
+ENV PROTOC_VERSION=3.5.1
 RUN wget -O /home/dev/protoc-$PROTOC_VERSION-linux-x86_64.zip https://github.com/google/protobuf/releases/download/v$PROTOC_VERSION/protoc-$PROTOC_VERSION-linux-x86_64.zip &&\
     sudo unzip /home/dev/protoc-$PROTOC_VERSION-linux-x86_64.zip bin/protoc -d /usr/local/ &&\
     sudo chmod a+x /usr/local/bin/protoc &&\
     rm -fR /home/dev/protoc-$PROTOC_VERSION-linux-x86_64*
 
 # Installs dep for dependency management
-RUN sudo wget -O /usr/local/bin/dep https://github.com/golang/dep/releases/download/v0.3.1/dep-linux-amd64 &&\
+ENV DEP_VERSION=v0.3.2
+RUN sudo wget -O /usr/local/bin/dep https://github.com/golang/dep/releases/download/$DEP_VERSION/dep-linux-amd64 &&\
     sudo chmod a+x /usr/local/bin/dep
 
 # Drop in zsh environment configuring script
