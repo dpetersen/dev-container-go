@@ -1,3 +1,6 @@
 export GOROOT="/usr/local/go"
 export GOPATH="/home/dev/gopath"
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+if [[ -z $TMUX ]]; then
+        export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi
